@@ -17,6 +17,12 @@ public partial class DbNhapMonContext : DbContext
     }
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
+    public virtual DbSet<TblGhe> TblGhe { get; set; }
+    public virtual DbSet<TblGioChieu> TblGioChieu { get; set; }
+    public virtual DbSet<TblPhim> TblPhim { get; set; }
+    public virtual DbSet<TblPhong> TblPhong { get; set; }
+    public virtual DbSet<TblTheLoai> TblTheLoai { get; set; }
+    public virtual DbSet<TblVe> TblVe { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -92,6 +98,32 @@ public partial class DbNhapMonContext : DbContext
 		return this.TblUsers.FromSqlRaw(sql, parameters.ToArray());
 	}
 
+    public IQueryable<TblTheLoai> GetAllTheLoai()
+    {
 
-	partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        string sql = "EXECUTE getAllTheLoai" ;
+       
+        return this.TblTheLoai.FromSqlRaw(sql);
+    }
+    public void addTheLoai(string tenTheLoai)
+    {
+        string sql = "EXECUTE addTheLoai @tenTheLoai";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@tenTheLoai", Value = tenTheLoai },
+            };
+        this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
+    }
+
+    public void deleteTheLoai(int id)
+    {
+        string sql = "EXECUTE deleteTheLoai @id";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@id", Value = id },
+            };
+        this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

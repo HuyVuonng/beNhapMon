@@ -135,3 +135,4 @@ D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Debug\net8.0\BE_QuanLyBanVeXemPhim.pdb
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Debug\net8.0\BE_QuanLyBanVeXemPhim.genruntimeconfig.cache
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Debug\net8.0\ref\BE_QuanLyBanVeXemPhim.dll
+D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Debug\net8.0\BE_QuanLyBanVeXemPhim.sourcelink.json

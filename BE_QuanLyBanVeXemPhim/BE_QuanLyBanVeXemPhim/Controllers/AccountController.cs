@@ -57,7 +57,23 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 		}
 
 
-		[HttpPost]
+
+        [HttpPost]
+        [Route("/registerAccountManager")]
+        [Authorize(Roles = "Admin, Manager")]
+        public async Task<IActionResult> registerAccountManager([FromBody] RegisterUserAccount data)
+        {
+            List<TblUser> user = this._dB.checkUserRegister(data.SUserName).ToList();
+            if (user.Count > 0)
+            {
+                return StatusCode(400, "Đã tồn tại emial này");
+
+            }
+            this._dB.registerAccount(data.SUserName, data.SPassword, data.SFullName, data.DDateOfBirth, data.SPhoneNumber, "Manager");
+            return Ok();
+        }
+
+        [HttpPost]
 		[Route("/loginAccount")]
 		public async Task<IActionResult> loginAccount([FromBody] loginAccount data)
 		{
@@ -94,8 +110,8 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
         [HttpPost]
         [Route("/getRole")]
-        [Authorize]
-        public async Task<IActionResult> getRole([FromBody] loginAccount data)
+		[Authorize]
+		public async Task<IActionResult> getRole([FromBody] loginAccount data)
         {
             List<TblUser> users = this._dB.loginAccount(data.SUserName, data.SPassword).ToList();
 

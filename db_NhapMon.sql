@@ -1,4 +1,4 @@
--- ================================================
+﻿-- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
 --
@@ -34,7 +34,7 @@ END
 GO
 
 
-alter PROCEDURE registerAccount
+create PROCEDURE registerAccount
 @fullName nvarchar(50),@userName nvarchar(50),@passWord nvarchar(50),@dateOfBirth date,
 @phoneNumber nvarchar(50), @role nvarchar(50)
 AS
@@ -64,3 +64,35 @@ BEGIN
 	where tblUser.sUserName= @userName and tblUser.sPassword=@passWord
 END
 GO
+
+
+create proc getAllTheLoai
+as
+begin
+select * from tblTheLoai
+end
+go
+
+exec getAllTheLoai
+
+create proc addTheLoai
+@tenTheLoai nvarchar(max)
+as
+begin
+insert into tblTheLoai (sTenTheLoai)
+values (@tenTheLoai)
+end
+go
+
+exec addTheLoai N'Hoạt hình'
+
+
+create proc deleteTheLoai
+@id bigint
+as
+begin
+delete tblTheLoai
+where tblTheLoai.PK_iTheLoaiID=@id
+end
+go
+
