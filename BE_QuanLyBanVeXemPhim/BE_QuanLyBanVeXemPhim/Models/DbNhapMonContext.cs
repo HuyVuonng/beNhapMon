@@ -125,5 +125,58 @@ public partial class DbNhapMonContext : DbContext
         this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
     }
 
+
+    public IQueryable<TblPhong> GetAllPhong()
+    {
+
+        string sql = "EXECUTE getAllPhong";
+
+        return this.TblPhong.FromSqlRaw(sql);
+    }
+
+    public IQueryable<TblPhong> GetPhongByID(int id)
+    {
+
+        string sql = "EXECUTE getPhongByID @id";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@id", Value = id },
+            };
+        return this.TblPhong.FromSqlRaw(sql, parameters.ToArray());
+    }
+
+    public void addPhong(string tenPhong, int soLuongGhe)
+    {
+        string sql = "EXECUTE addPhong @tenPhong, @soLuongGhe";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@tenPhong", Value = tenPhong },
+                  new SqlParameter { ParameterName = "@soLuongGhe", Value = soLuongGhe },
+            };
+        this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
+    }
+
+    public void editPhong(string tenPhong, int soLuongGhe, int id)
+    {
+        string sql = "EXECUTE editPhong @tenPhong, @soLuongGhe, @id";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@tenPhong", Value = tenPhong },
+                  new SqlParameter { ParameterName = "@soLuongGhe", Value = soLuongGhe },
+                  new SqlParameter { ParameterName = "@id", Value = id },
+            };
+        this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
+    }
+
+    public void deletePhong(int id)
+    {
+        string sql = "EXECUTE deletePhong @id";
+        List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                  new SqlParameter { ParameterName = "@id", Value = id },
+            };
+        this.Database.ExecuteSqlRaw(sql, parameters.ToArray());
+    }
+
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -7,5 +7,7 @@ namespace BE_QuanLyBanVeXemPhim.Models
         [Key]
         public long PK_iPhongID { get; set; }
         public string sTenPhong { get; set; } = null!;
+        public long iSoLuongGhe { get; set; }
+
     }
 }
