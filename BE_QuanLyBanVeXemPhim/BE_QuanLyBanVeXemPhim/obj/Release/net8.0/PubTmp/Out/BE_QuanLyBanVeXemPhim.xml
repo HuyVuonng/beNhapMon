@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BE_QuanLyBanVeXemPhim</name>
+    </assembly>
+    <members>
+        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.TheLoaiController.AddTheLoai(BE_QuanLyBanVeXemPhim.Models.TblTheLoai)">
+            <summary>
+            Chỉ cần truyền tên thể loại body chỉ có {"sTenTheLoai": "string"}
+            </summary>
+        </member>
+        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.TheLoaiController.DeleteTheLoai(BE_QuanLyBanVeXemPhim.Models.TblTheLoai)">
+            <summary>
+            Chỉ cần truyền id thể loại body chỉ có {"pK_iTheLoaiID": id thể loại cần xoá}
+            </summary>
+        </member>
+    </members>
+</doc>
