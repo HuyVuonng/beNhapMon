@@ -96,3 +96,52 @@ where tblTheLoai.PK_iTheLoaiID=@id
 end
 go
 
+--phòng
+
+create proc getPhong
+as
+begin
+select *
+from tblPhong
+end
+go
+
+create proc getPhongByID
+@id bigint
+as
+begin
+select *
+from tblPhong
+where tblPhong.PK_iPhongID=@id
+end
+go
+
+create proc addPhong
+@tenPhong nvarchar(max),@soLuongGhe bigint
+as
+begin
+insert into tblPhong(sTenPhong, iSoLuongGhe)
+values (@tenPhong, @soLuongGhe)
+end
+go
+
+alter proc editPhong
+@tenPhong nvarchar(max),@soLuongGhe bigint, @id bigint
+as
+begin
+update tblPhong
+set iSoLuongGhe=@soLuongGhe,sTenPhong=@tenPhong
+where PK_iPhongID=@id
+end
+go
+
+exec editPhong N'Phong 1', 60,1
+
+create proc deletePhong
+@id bigint
+as
+begin
+delete tblPhong
+where tblPhong.PK_iPhongID=@id
+end
+go
