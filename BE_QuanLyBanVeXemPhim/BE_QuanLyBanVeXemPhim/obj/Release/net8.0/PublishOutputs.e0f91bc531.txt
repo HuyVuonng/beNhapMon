@@ -47,4 +47,5 @@ D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Release\net8.0\PubTmp\Out\BE_QuanLyBanVeXemPhim.xml
 D:\CacKyHocDaiHoc\Chuyen_Nganh\NhapMonCongNghePhanMem\BTL\BE_QuanLyBanVeXemPhim\BE_QuanLyBanVeXemPhim\obj\Release\net8.0\PubTmp\Out\BE_QuanLyBanVeXemPhim.deps.json
