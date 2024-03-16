@@ -2,6 +2,7 @@
 using BE_QuanLyBanVeXemPhim.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -88,7 +89,6 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 				new Claim("userName",user.SUserName),
 				new Claim("dateOfBirth",user.DDateOfBirth.ToString()),
 				new Claim("phoneNumber",user.SPhoneNumber),
-				new Claim("Role",user.SRole),
 				new Claim(ClaimTypes.Role,user.SRole),
             };
 				var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
@@ -108,20 +108,24 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
 
 
-        [HttpPost]
-        [Route("/getRole")]
+        [HttpGet]
+        [Route("/getInfor")]
 		[Authorize]
-		public async Task<IActionResult> getRole([FromBody] loginAccount data)
+		public async Task<IActionResult> getInfor()
         {
-            List<TblUser> users = this._dB.loginAccount(data.SUserName, data.SPassword).ToList();
-
-            if (users.Count > 0)
-            {
-                TblUser user = users.First();
-               
-                return Ok(user.SRole);
-            }
-            return StatusCode(400, "Không có user này");
+			var Role= User.FindFirstValue(ClaimTypes.Role);
+			var userName = User.Claims.FirstOrDefault(x => x.Type.Equals("username", StringComparison.InvariantCultureIgnoreCase));
+			var fullName=User.Claims.FirstOrDefault(x => x.Type.Equals("fullname", StringComparison.InvariantCultureIgnoreCase));
+			var dateOfBirth = User.Claims.FirstOrDefault(x => x.Type.Equals("dateOfBirth", StringComparison.InvariantCultureIgnoreCase));
+            var phoneNumber = User.Claims.FirstOrDefault(x => x.Type.Equals("phoneNumber", StringComparison.InvariantCultureIgnoreCase));
+            return Ok(new {
+				Role,
+				userName= userName.Value,
+                fullName= fullName.Value,
+                dateOfBirth = dateOfBirth.Value,
+                phoneNumber = phoneNumber.Value,
+            });
+           
         }
     }
 }

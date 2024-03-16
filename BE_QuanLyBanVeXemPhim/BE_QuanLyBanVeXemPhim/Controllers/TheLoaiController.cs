@@ -30,23 +30,30 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
             return Ok(theLoai);
         }
 
-        [HttpPost]
+
+        /// <summary>
+        /// Chỉ cần truyền tên thể loại body chỉ có {"sTenTheLoai": "string"}
+        /// </summary>
+
+    [HttpPost]
         [Route("/Add")]
         [Authorize(Roles = "Admin, Manager")]
-        public async Task<IActionResult> AddTheLoai(string tenTheLoai)
+        public async Task<IActionResult> AddTheLoai([FromBody] TblTheLoai tblTheLoai)
         {
-            this._dB.addTheLoai(tenTheLoai);
+            this._dB.addTheLoai(tblTheLoai.sTenTheLoai);
             List<TblTheLoai> theLoai = this._dB.GetAllTheLoai().ToList();
             return Ok(theLoai);
         }
 
-
+        /// <summary>
+        /// Chỉ cần truyền id thể loại body chỉ có {"pK_iTheLoaiID": id thể loại cần xoá}
+        /// </summary>
         [HttpDelete]
         [Route("/Delete")]
         [Authorize(Roles = "Admin,Manager")]
-        public async Task<IActionResult> DeleteTheLoai(int id)
+        public async Task<IActionResult> DeleteTheLoai([FromBody] TblTheLoai tblTheLoai)
         {
-            this._dB.deleteTheLoai(id);
+            this._dB.deleteTheLoai((int)tblTheLoai.PK_iTheLoaiID);
             List<TblTheLoai> theLoai = this._dB.GetAllTheLoai().ToList();
             return Ok(theLoai);
         }
