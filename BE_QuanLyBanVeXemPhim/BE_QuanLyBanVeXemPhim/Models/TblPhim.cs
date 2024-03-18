@@ -14,6 +14,7 @@ namespace BE_QuanLyBanVeXemPhim.Models
         public float fGia { get; set; }
         public string sNoiDung { get; set; } = null!;
         public string sTrailer { get; set; } = null!;
+        public string sTrangThai { get; set; } = null!;
 
         public virtual TblTheLoai TheLoai { get; set; } = null!;
     }

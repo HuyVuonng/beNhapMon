@@ -57,29 +57,22 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> UpdatePhong([FromBody] TblPhong tblPhong)
         {
-          
-            //if (tblPhong.sTenPhong==null)
-            //{
-            //    tblPhong.sTenPhong= phong.FirstOrDefault().sTenPhong;
-            //}
-            //if (tblPhong.iSoLuongGhe == null)
-            //{
-            //    tblPhong.iSoLuongGhe = phong.FirstOrDefault().iSoLuongGhe;
-            //}
              if(ModelState.IsValid)
             {
-                List<TblPhong> phong = this._dB.GetPhongByID((int)tblPhong.PK_iPhongID).ToList();
-                if (phong.Count < 1)
+                var phongedit = this._dB.TblPhong.Where(e => e.PK_iPhongID == tblPhong.PK_iPhongID).FirstOrDefault();
+                if (phongedit != null)
+                {
+                    phongedit.iSoLuongGhe=tblPhong.iSoLuongGhe;
+                    phongedit.sTenPhong = tblPhong.sTenPhong;
+                    this._dB.SaveChanges();
+                }
+                else
                 {
                     return NotFound("Không tồn tại phòng này");
                 }
-
-                this._dB.editPhong(tblPhong.sTenPhong, (int)tblPhong.iSoLuongGhe, (int)tblPhong.PK_iPhongID);
-                return Ok();
+                return Ok(this._dB.TblPhong.Where(e => e.PK_iPhongID == tblPhong.PK_iPhongID).FirstOrDefault());
             }else
             return BadRequest("Điền đủ các trường");
-
-
         }
 
 
