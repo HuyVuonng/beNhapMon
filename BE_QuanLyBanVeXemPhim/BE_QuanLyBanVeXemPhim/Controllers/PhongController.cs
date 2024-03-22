@@ -1,4 +1,5 @@
-﻿using BE_QuanLyBanVeXemPhim.Models;
+﻿using BE_QuanLyBanVeXemPhim.DTO;
+using BE_QuanLyBanVeXemPhim.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         }
 
         [HttpGet]
-        [Route("/GetAllPhong")]
+        [Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             List<TblPhong> phong = this._dB.GetAllPhong().ToList();
@@ -30,7 +31,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         }
 
         [HttpGet]
-        [Route("/GetPhongByID")]
+        [Route("GetByID")]
         public async Task<IActionResult> GetPhongByID(int id)
         {
             List<TblPhong> phong = this._dB.GetPhongByID(id).ToList();
@@ -38,14 +39,12 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
             return Ok(phong);
         }
 
-        /// <summary>
-        /// Chỉ cần truyền tên phòng và số lượng ghế body chỉ có {"sTenphong": "string",iSoLuongGhe: int}
-        /// </summary>
+       
 
         [HttpPost]
-        [Route("/AddPhong")]
+        [Route("Add")]
         [Authorize(Roles = "Admin, Manager")]
-        public async Task<IActionResult> AddPhong([FromBody] TblPhong tblPhong)
+        public async Task<IActionResult> AddPhong([FromBody] AddPhong tblPhong)
         {
             this._dB.addPhong(tblPhong.sTenPhong, (int)tblPhong.iSoLuongGhe);
             List<TblPhong> phong = this._dB.GetAllPhong().ToList();
@@ -53,7 +52,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         }
 
         [HttpPut]
-        [Route("/UpdatePhong")]
+        [Route("Update")]
         [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> UpdatePhong([FromBody] TblPhong tblPhong)
         {
@@ -76,13 +75,11 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         }
 
 
-        /// <summary>
-        /// Chỉ cần truyền id phong body chỉ có {"pK_iPhongID": id thể loại cần xoá}
-        /// </summary>
+       
         [HttpDelete]
-        [Route("/DeletePhong")]
+        [Route("Delete")]
         [Authorize(Roles = "Admin,Manager")]
-        public async Task<IActionResult> DeletePhong([FromBody] TblPhong tblPhong)
+        public async Task<IActionResult> DeletePhong([FromBody] DeletePhong tblPhong)
         {
             this._dB.deletePhong((int)tblPhong.PK_iPhongID);
             List<TblPhong> phong = this._dB.GetAllPhong().ToList();

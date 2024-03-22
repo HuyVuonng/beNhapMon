@@ -1,13 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BE_QuanLyBanVeXemPhim.Models
 {
     public partial class TblGhe
     {
         [Key]
-        public long PK_iGheID { get; set; }
+        [AllowNull]
+        public long? PK_iGheID { get; set; }
 
-        public long iSoghe { get; set; }
+        public string sTenGhe { get; set; } = null!;
     }
 }

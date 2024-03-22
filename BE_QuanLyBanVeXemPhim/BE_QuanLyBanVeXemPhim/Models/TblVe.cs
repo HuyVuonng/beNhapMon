@@ -14,11 +14,7 @@ namespace BE_QuanLyBanVeXemPhim.Models
         public long FK_iGheID { get; set; }
         public long FK_iGioChieuID { get; set; }
         public DateTime dThoiGianMua { get; set; }
+		public long FK_iXuatChieuID { get; set; }
 
-        public virtual TblPhim TblPhim { get; set; } = null!;
-        public virtual TblUser TblUser { get; set; } = null!;
-        public virtual TblPhong TblPhong { get; set; } = null!;
-        public virtual TblGhe TblGhe { get; set; } = null!;
-        public virtual TblGioChieu TblGioChieu { get; set; } = null!;
-    }
+	}
 }
