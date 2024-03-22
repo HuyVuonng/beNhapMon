@@ -93,7 +93,11 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
                 this._dB.TblGioChieu.Remove(gioChieuDelete);
                 this._dB.SaveChanges(true);
             }
-            return Ok();
+			else
+			{
+				return NotFound();
+			}
+			return Ok();
         }
 
     }

@@ -10,5 +10,5 @@ namespace BE_QuanLyBanVeXemPhim.Models
         public long? PK_iGioChieuID { get; set;}
 
         public string sTenGio { get; set; } = null!;
-    }
+	}
 }

@@ -135,7 +135,11 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
                 this._dB.TblPhim.Remove(phimDelete);
                 this._dB.SaveChanges(true);
             }
-            return Ok();
+			else
+			{
+				return NotFound();
+			}
+			return Ok();
         }
 
 
