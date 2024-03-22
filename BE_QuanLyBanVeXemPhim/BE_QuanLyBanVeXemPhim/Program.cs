@@ -1,6 +1,7 @@
 using BE_QuanLyBanVeXemPhim;
 using BE_QuanLyBanVeXemPhim.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -17,7 +18,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-
 
 string issuer = GetValueAppSetting.AppSetting["Tokens:Issuer"];
 string signingKey = GetValueAppSetting.AppSetting["Tokens:Key"];

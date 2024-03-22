@@ -29,7 +29,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
 
 		[HttpPost]
-		[Route("/registerAccountUser")]
+		[Route("registerAccountUser")]
 		public async Task<IActionResult> registerAccountUser([FromBody] RegisterUserAccount data)
 		{
 			List<TblUser> user = this._dB.checkUserRegister(data.SUserName).ToList();
@@ -43,7 +43,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
 
 		[HttpPost]
-		[Route("/registerAccountEmployee")]
+		[Route("registerAccountEmployee")]
 		[Authorize(Roles = "Admin, Manager")]
 		public async Task<IActionResult> registerAccountEmployee([FromBody] RegisterUserAccount data)
 		{
@@ -60,7 +60,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
 
         [HttpPost]
-        [Route("/registerAccountManager")]
+        [Route("registerAccountManager")]
         [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> registerAccountManager([FromBody] RegisterUserAccount data)
         {
@@ -75,7 +75,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
         }
 
         [HttpPost]
-		[Route("/loginAccount")]
+		[Route("loginAccount")]
 		public async Task<IActionResult> loginAccount([FromBody] loginAccount data)
 		{
 			List<TblUser> users = this._dB.loginAccount(data.SUserName, data.SPassword).ToList();
@@ -109,7 +109,7 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 
 
         [HttpGet]
-        [Route("/getInfor")]
+        [Route("getInfor")]
 		[Authorize]
 		public async Task<IActionResult> getInfor()
         {

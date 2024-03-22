@@ -1,13 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-
-namespace BE_QuanLyBanVeXemPhim.Models
+﻿namespace BE_QuanLyBanVeXemPhim.DTO
 {
-    public partial class TblPhim
+    public class AddPhim
     {
-        [Key]
-        [AllowNull]
-        public long? PK_iPhimID { get; set; }
         public string sTenPhim { get; set; } = null!;
         public long iThoiLuong { get; set; }
         public long FK_iTheLoaiID { get; set; }

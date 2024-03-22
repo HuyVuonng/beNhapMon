@@ -4,25 +4,5 @@
         <name>BE_QuanLyBanVeXemPhim</name>
     </assembly>
     <members>
-        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.PhongController.AddPhong(BE_QuanLyBanVeXemPhim.Models.TblPhong)">
-            <summary>
-            Chỉ cần truyền tên phòng và số lượng ghế body chỉ có {"sTenphong": "string",iSoLuongGhe: int}
-            </summary>
-        </member>
-        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.PhongController.DeletePhong(BE_QuanLyBanVeXemPhim.Models.TblPhong)">
-            <summary>
-            Chỉ cần truyền id phong body chỉ có {"pK_iPhongID": id thể loại cần xoá}
-            </summary>
-        </member>
-        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.TheLoaiController.AddTheLoai(BE_QuanLyBanVeXemPhim.Models.TblTheLoai)">
-            <summary>
-            Chỉ cần truyền tên thể loại body chỉ có {"sTenTheLoai": "string"}
-            </summary>
-        </member>
-        <member name="M:BE_QuanLyBanVeXemPhim.Controllers.TheLoaiController.DeleteTheLoai(BE_QuanLyBanVeXemPhim.Models.TblTheLoai)">
-            <summary>
-            Chỉ cần truyền id thể loại body chỉ có {"pK_iTheLoaiID": id thể loại cần xoá}
-            </summary>
-        </member>
     </members>
 </doc>
