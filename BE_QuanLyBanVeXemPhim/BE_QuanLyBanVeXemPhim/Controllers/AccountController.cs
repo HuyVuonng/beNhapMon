@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -97,15 +98,40 @@ namespace BE_QuanLyBanVeXemPhim.Controllers
 				var token = new JwtSecurityToken(_config["Tokens:Issuer"],
 					_config["Tokens:Issuer"],
 					claims,
-					expires: DateTime.Now.AddMinutes(30),
-					signingCredentials: creds);
+                    expires: DateTime.Now.AddHours(30),
+                    signingCredentials: creds);
 
-
-				return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                var resuil = new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    Role = user.SRole,
+                    userName = user.SUserName,
+                    fullName = user.SFullName,
+                };
+                return Ok(resuil);
 			}
-			return StatusCode(400, "Không có user này");
+			return StatusCode(400, "Tài khoản hoặc mật khẩu sai");
 		}
 
+
+
+        [HttpPost]
+        [Route("forgotPass")]
+        public async Task<IActionResult> forgotPass([FromBody] loginAccount data)
+        {
+            var user = this._dB.TblUsers.Where(u=>u.SUserName==data.SUserName).FirstOrDefault();
+
+            if (user != null)
+            {
+
+
+               user.SPassword = data.SPassword;
+				this._dB.SaveChanges();
+
+                return Ok();
+            }
+            return StatusCode(400, "Không có user này");
+        }
 
 
         [HttpGet]
